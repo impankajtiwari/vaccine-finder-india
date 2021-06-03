@@ -1,3 +1,4 @@
+import sys
 import pyttsx3
 import datetime
 import requests
@@ -6,8 +7,8 @@ import schedule
 import time
 from datetime import datetime
 
-AGE_FILTER = 45
-DISTRICT_ID = 294 # Determine Districts of interest from here 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/16'
+AGE_FILTER = 18
+DISTRICT_ID = 363 # Determine Districts of interest from here 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/16'
 SCAN_FREQUENCY_SECONDS = 30
 APPOINTMENT_COUNT_THRESHOLD = 3 # Notify ONLY when 3 or more seats are available
 
@@ -24,6 +25,18 @@ def job():
 	else:
 		play_tone()
 		to_speech(r)
+
+def store_user_inputs():
+	try:
+		AGE_FILTER = sys.argv[1]
+		DISTRICT_ID = sys.argv[2]
+	except:
+		sys.exit("[Error]: Missing required fields :'python vaccine-finder <age-filter> <district-id>'")
+	try:
+		SCAN_FREQUENCY_SECONDS = sys.argv[3]
+		APPOINTMENT_COUNT_THRESHOLD = sys.argv[4]
+	except:
+		print("Optional parameters (<scan_frequency> & <appointment-count-threshold>) not provided")
 
 def str_date(t):
 	#t=1 => Long, Other Values => Short
@@ -72,6 +85,7 @@ def find_open_centers(centers,age):
 				print(res)
 	return res
 
+store_user_inputs()
 schedule.every(SCAN_FREQUENCY_SECONDS).seconds.do(job)
 print("-----------------------------------------------")
 print("Hold tight! The script will run in "+str(SCAN_FREQUENCY_SECONDS)+" seconds.")
