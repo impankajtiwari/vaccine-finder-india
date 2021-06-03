@@ -15,7 +15,7 @@ pip install -r requirements.txt
 python vaccine-finder.py <age-filter> <district-id> <scan-frequency> <appointment-count-threshold> 
 ```
 ### Parameters
-* _age-filter>_ - Valid values '18' or '45'
+* _age-filter_ - Valid values '18' or '45'
 * _district-id_ - Use the values from [here](https://cdn-api.co-vin.in/api/v2/admin/location/districts/16)
 * _scan-frequency_ - Frequency of checking for slots (default 30 seconds)
 * _appointment-count-threshold_ - Notify only when number of free appointments > the threshold value
