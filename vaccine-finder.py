@@ -17,7 +17,6 @@ def job():
 	VAC_FINDER_URL = "https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict"
 	fd = str_date(0)
 	VAC_FINDER_URL += "?district_id="+str(DISTRICT_ID)+"&date="+fd+""
-	print(VAC_FINDER_URL)
 	centers = fetch_all_vac_centers(VAC_FINDER_URL)
 	r = find_open_centers(centers,AGE_FILTER)
 	if not r:
