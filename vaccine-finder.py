@@ -8,7 +8,7 @@ import time
 from datetime import datetime
 
 AGE_FILTER = 18
-DISTRICT_ID = 363 # Determine Districts of interest from here 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/16'
+DISTRICT_ID = 294 # Determine Districts of interest from here 'https://cdn-api.co-vin.in/api/v2/admin/location/districts/16'
 SCAN_FREQUENCY_SECONDS = 30
 APPOINTMENT_COUNT_THRESHOLD = 3 # Notify ONLY when 3 or more seats are available
 
