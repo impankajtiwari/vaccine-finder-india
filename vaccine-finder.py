@@ -73,11 +73,17 @@ def fetch_all_vac_centers(url):
 		print("[Error]: Connectivity to internet lost!")
 	return res
 
+def areSame(a, b):
+   if (int(a) ^ int(b)):
+       return False
+   else:
+       return True
+
 def find_open_centers(centers,age):
 	res = ""
 	for c in centers:
 		for s in c['sessions']:
-			if(s['min_age_limit']==age and s['available_capacity_dose1'] > APPOINTMENT_COUNT_THRESHOLD):
+			if(areSame(s['min_age_limit'],age) and s['available_capacity_dose1'] > APPOINTMENT_COUNT_THRESHOLD):
 				#res = c['name']+" => "+c['address']+" => "+c['district_name']+" => "+c['block_name']+" => "+str(c['pincode'])+" => "+s['date']+" => "+str(s['min_age_limit'])+" => "+str(s['available_capacity_dose1'])
 				#res += "\n\nCenter: "+c['name']+" of "+c['district_name']+" district, "+c['block_name']+" block on "+s['date']+", "+str(s['min_age_limit'])+"+, "+str(s['available_capacity_dose1'])+" seats. "
 				res += "District: "+c['district_name']+" ,"+str(s['available_capacity_dose1'])+" seats. "
