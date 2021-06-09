@@ -81,13 +81,21 @@ def areSame(a, b):
 
 def find_open_centers(centers,age):
 	res = ""
+	cCount=0
+	availSlots=0
+	districtName=""
 	for c in centers:
+		cCount = cCount + 1
 		for s in c['sessions']:
 			if(areSame(s['min_age_limit'],age) and s['available_capacity_dose1'] > APPOINTMENT_COUNT_THRESHOLD):
 				#res = c['name']+" => "+c['address']+" => "+c['district_name']+" => "+c['block_name']+" => "+str(c['pincode'])+" => "+s['date']+" => "+str(s['min_age_limit'])+" => "+str(s['available_capacity_dose1'])
 				#res += "\n\nCenter: "+c['name']+" of "+c['district_name']+" district, "+c['block_name']+" block on "+s['date']+", "+str(s['min_age_limit'])+"+, "+str(s['available_capacity_dose1'])+" seats. "
-				res += "District: "+c['district_name']+" ,"+str(s['available_capacity_dose1'])+" seats. "
-				print(res)
+				#res += "District: "+c['district_name']+" ,"+str(s['available_capacity_dose1'])+" seats. "
+				availSlots = availSlots + s['available_capacity_dose1']
+				districtName=c['district_name']
+				#print(res)
+	if( availSlots > APPOINTMENT_COUNT_THRESHOLD ):
+		res = str(availSlots)+" free slots available in district "+districtName+" across "+str(cCount)+" centers for age group "+str(age)+"+."
 	return res
 
 store_user_inputs()
