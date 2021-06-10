@@ -21,5 +21,5 @@ python vaccine-finder.py <age-filter> <district-id> <scan-frequency> <appointmen
 * _appointment-count-threshold_ - Notify only when number of free appointments > the threshold value
 
 ### Output
-The program will run at specified frequency (default 30 seconds) to check for open/free slots. It uses the text2speech to report any open seats are available.
+The program will run at specified frequency (default 30 seconds) to check for open/free slots. It uses the text2speech to report any open seats whenever they become available.
 ![image](https://user-images.githubusercontent.com/6766950/120643697-1a470d00-c494-11eb-87f6-135d31b3deb0.png)
