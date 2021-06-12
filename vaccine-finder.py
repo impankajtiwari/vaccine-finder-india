@@ -96,6 +96,7 @@ def find_open_centers(centers,age):
 				#print(res)
 	if( availSlots > APPOINTMENT_COUNT_THRESHOLD ):
 		res = str(availSlots)+" free slots available in district "+districtName+" across "+str(cCount)+" centers for age group "+str(age)+"+."
+		print(res)
 	return res
 
 store_user_inputs()
